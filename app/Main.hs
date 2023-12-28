@@ -6,11 +6,11 @@
 
 module Main (main) where
 
-import Data.Aeson (FromJSON, ToJSON, encode)
+import Data.Aeson (ToJSON)
 import Data.List (find)
 import GHC.Generics (Generic)
 import System.Environment (getEnv)
-import Web.Scotty
+import Web.Scotty (get, json, pathParam, scotty)
 
 data User = MkUser {_id :: Int, name :: String, age :: Int}
   deriving stock (Show, Generic)
