@@ -9,7 +9,7 @@ RUN cabal build --only-dependencies
 COPY . /app/
 RUN cabal build
 
-RUN mv $(cabal exec which abc | tail -n 1) /app/executable
+RUN mv $(cabal list-bin abc) /app/executable
 
 FROM debian:buster-slim
 ARG PORT
