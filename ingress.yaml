@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  labels:
+    app: nginx-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
+spec:
+  rules:
+    - host: "<domain goes here>"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/(.*)"
+            backend:
+              service:
+                name: abc-server
+                port:
+                  number: 8080

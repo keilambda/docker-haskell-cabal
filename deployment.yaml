@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: abc-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: abc-server
+  template:
+    metadata:
+      labels:
+        app: abc-server
+    spec:
+      containers:
+        - name: abc-server
+          image: abc:latest
+          imagePullPolicy: Never
+          resources:
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
