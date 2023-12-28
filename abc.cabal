@@ -1,0 +1,14 @@
+cabal-version: 3.0
+name:          abc
+version:       0.1.0.0
+build-type:    Simple
+
+executable abc
+  main-is:          Main.hs
+  build-depends:
+    , aeson
+    , base    ^>=4.17.2.1
+    , scotty
+
+  hs-source-dirs:   app
+  default-language: GHC2021
